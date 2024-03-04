@@ -1,4 +1,3 @@
-// import './assets/main.css'
 import 'virtual:uno.css'
 import '@unocss/reset/normalize.css'
 import './styles/index.scss'

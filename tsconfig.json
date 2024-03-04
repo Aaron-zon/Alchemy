@@ -1,4 +1,12 @@
 {
+  // "include": [
+  //   "./typed-router.d.ts"
+  // ],
+  // "compilerOPtions": {
+  //   "types": [
+  //     "unplugin-vue-router/client"
+  //   ]
+  // },
   "files": [],
   "references": [
     {

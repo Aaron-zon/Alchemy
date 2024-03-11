@@ -1,26 +1,21 @@
-<script setup>
+<script lang="ts" setup>
+import { works } from '../works'
 
+console.log(works);
 </script>
 
 <template>
-    <div class="index-container">
-        <div 
-            class="context m-100 text-red"
-        >
-            index
-        </div>
-        <!-- <div class="text-red">index</div> -->
-        <!-- z-bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600" -->
-
+    <div class="border border-gray-300">
+        <h1 class="font-mono mb-2 text-lg font-bold mb-4">Alchemy</h1>
+        <pre class="flex grid gap-x-4 gap-y-1">
+            <router-link class="flex link block mr-4" v-for="work in works" :key="work.no" :to="`/${work.no}`">
+                <span class="inline-block mr-2 opacity-50">{{ work.no }}</span>
+                <b class="inline-block">{{ work.name }}</b>
+            </router-link>
+        </pre>
+        <h1 class="font-mono mb-2 text-lg font-bold mb-4"></h1>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.index-container {
-    border: 1px solid black;
-
-    .context {
-        border: 1px solid black;
-    }
-}
 </style>

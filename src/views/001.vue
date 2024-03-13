@@ -48,14 +48,13 @@ onMounted(() => {
 
 
   const frame = () => {
-    console.log(1)
     iterations += 1
     prevSteps = steps
     steps = []
 
     if (!prevSteps.length) {
+      // 结束
       controls.pause()
-      // stop
       stoped.value = true
     }
     prevSteps.forEach(i => i())
@@ -87,9 +86,11 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="page flex justify-center items-center">
-    <canvas ref="el" class="canvas b-solid b-width-1"></canvas>
-  </div>
+  <Paper>
+    <div class="page flex justify-center items-center">
+      <canvas ref="el" class="canvas b-solid b-width-1"></canvas>
+    </div>
+  </Paper>
 </template>
 
 <style>

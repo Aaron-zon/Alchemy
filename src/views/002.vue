@@ -4,11 +4,12 @@ import Matter from 'matter-js'
 
 const el = ref()
 onMounted(() => {
-    var Engine = Matter.Engine,
-    Render = Matter.Render,
-    Runner = Matter.Runner,
-    Bodies = Matter.Bodies,
-    Composite = Matter.Composite
+    var Engine = Matter.Engine, // 引擎
+    Render = Matter.Render, // 渲染器
+    Runner = Matter.Runner, // 循环模块
+    Bodies = Matter.Bodies, // 刚体
+    Composite = Matter.Composite  // 复合体
+    // Constraint 约束
 
     // 创建引擎
     var engine = Engine.create()
@@ -38,7 +39,7 @@ onMounted(() => {
     // 运行渲染器
     Render.run(render)
 
-    // 创建运行对象
+    // 创建运行方法
     var runner = Runner.create()
 
     // 运行引擎

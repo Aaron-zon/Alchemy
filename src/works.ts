@@ -6,6 +6,10 @@ export const info = [
     {
         name: 'Move',
         date: '2024/03/13',
+    },
+    {
+        name: 'LeftMove',
+        date: '2024/03/13',
     }
 ]
 

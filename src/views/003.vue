@@ -51,12 +51,7 @@ onMounted(() => {
 
 const handleClick = () => {
     // 重置 boxB 的位置
-    let boxAWidth = 80
-    let left = 80
-    let target = 80 + 80 / 2
     Matter.Body.applyForce(boxB.value, boxB.value.position, { x: -0.05 , y: -0.1})
-    console.log(boxB.value.position);
-
 }
 </script>
 

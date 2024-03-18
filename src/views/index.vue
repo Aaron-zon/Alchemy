@@ -5,7 +5,7 @@ console.log(works);
 </script>
 
 <template>
-    <div class="paper">
+    <div class="paper index-page">
         <div class="border border-gray-300">
             <h1 class="font-mono mb-2 text-lg font-bold mb-4">Alchemy</h1>
             <pre class="flex grid gap-x-4 gap-y-1">
@@ -25,6 +25,9 @@ console.log(works);
     place-items: center;
     user-select: none;
     justify-content: center;
+}
 
+.index-page {
+    width: auto;
 }
 </style>

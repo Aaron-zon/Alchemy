@@ -8,7 +8,7 @@ console.log(works);
     <div class="paper index-page">
         <div class="border border-gray-300">
             <h1 class="font-mono mb-2 text-lg font-bold mb-4">Alchemy</h1>
-            <pre class="flex grid gap-x-4 gap-y-1">
+            <pre class=" grid grid-cols-3 gap-x-4 gap-y-5 test">
                 <router-link class="flex link block mr-4" v-for="work in works" :key="work.no" :to="`/${work.no}`">
                     <span class="inline-block mr-2 opacity-50">{{ work.no }}</span>
                     <b class="inline-block">{{ work.name }}</b>

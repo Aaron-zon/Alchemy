@@ -14,6 +14,10 @@ export const info = [
     {
         name: 'Scope',
         date: '2024/03/18',
+    },
+    {
+        name: 'TextStereoscopic',
+        date: '2024/03/23',
     }
 ]
 

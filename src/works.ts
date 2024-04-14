@@ -18,6 +18,10 @@ export const info = [
     {
         name: 'TextStereoscopic',
         date: '2024/03/23',
+    },
+    {
+        name: 'draggable',
+        date: '2024/03/23',
     }
 ]
 

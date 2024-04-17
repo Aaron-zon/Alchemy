@@ -1,48 +1,29 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+// 后端代码：Alchemy-java/ MediaController.java
+
 // 普通视频回传
 const backendUrl = 'http://localhost:8080/getVideo'
 // 流式回传
 const backendStreamUrl = 'http://localhost:8080/getStreamVideo'
-
-
-const videoPlayer = ref()
-
-onMounted(() => {
-    init()
-})
-
-/**
- * 流式回传
- */
-const init = () => {
-    const xhr = new XMLHttpRequest()
-    xhr.open('GET', backendStreamUrl, true)
-    xhr.responseType = 'blob'
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            const videoBlob = xhr.response
-            const videoUrl = URL.createObjectURL(videoBlob)
-
-            videoPlayer.value.src = videoUrl
-        }
-    }
-
-    xhr.send();
-}
-
 </script>
 
 <template>
     <Paper>
-        <div class="flex flex-col w-120 h-120">
-            <h2>普通视频</h2>
+        <div class="flex flex-col w-120">
+            <h3>后端代码：Alchemy-java/ MediaController.java</h3>
+            <!-- 方式1 适合长视频 -->
+            <h2>流式传输(分片读取)</h2>
             <video controls autoplay>
-                <source :src="backendUrl" type="video/mp4">
+                <source :src="backendStreamUrl" type="video/mp4">
             </video>
 
-            <h2>流式传输</h2>
-            <video ref="videoPlayer" controls autoplay></video>
+            <!-- 方式2 适合短视频 -->
+            <!-- <h2>普通传输（一次性读取）</h2>
+            <video controls autoplay>
+                <source :src="backendUrl" type="video/mp4">
+            </video> -->
+
+            
         </div>
     </Paper>
 </template>

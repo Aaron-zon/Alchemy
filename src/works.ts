@@ -60,6 +60,10 @@ export const info = [
     {
         name: 'OCR', // 文字识别(未进行)
         no: 14,
+    },
+    {
+        name: '', // 瀑布流
+        no: 15,
     }
 ]
 

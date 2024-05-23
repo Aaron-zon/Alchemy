@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import { useWindowSize } from '@vueuse/core'
+import { computed, ref, reactive, watch } from 'vue'
+import { useWindowSize, useMouseInElement, useDeviceMotion } from '@vueuse/core'
 import { useWindowPosition } from '../utils'
 
 const BOX_SIZE = 400
-const box = ref<HTMLDivElement>()
+const box = ref<HTMLDivElement | null>()
 const { width, height } = useWindowSize()
 const { screenLeft, screenTop } = useWindowPosition()
-
+const mouse = reactive(useMouseInElement(box, { touch: true }))
+console.log(mouse.elementX)
 const boxX = ref((width.value - BOX_SIZE) / 2)
 const boxY = ref((height.value - BOX_SIZE) / 2)
 
@@ -16,20 +17,37 @@ const screenHeight = window.screen.height
 
 const px = (v:number) => `${v}px`
 
+const dragging = ref(false)
+const draggingOffests = ref([0, 0])
+
+const motion = reactive(useDeviceMotion())
+
+const mousedown = () => {
+  draggingOffests.value = [mouse.elementX, mouse.elementY]
+  dragging.value = true
+}
+
+const mouseup = () => {
+  dragging.value = false
+}
+
 watch(
-    () => [],
+    () => [mouse.x, mouse.y],
     ([x, y]) => {
+      if (!dragging.value) return
+      boxX.value = Math.min(Math.max(0, x - draggingOffests.value[0]), width.value - BOX_SIZE)
+      boxY.value = Math.min(Math.max(0, y - draggingOffests.value[1]), height.value - BOX_SIZE)
     }
 )
 
+// const innerX = 0
 const innerX = computed(() => -(boxX.value + screenLeft.value))
 const innerY = computed(() => -(boxY.value + screenTop.value))
 </script>
 
 <template>
     <Paper>
-        <div class="box fixed bg-widte" :style="{top: px(boxY), left: px(boxX)}">
-            <!-- :style="{top: px(innerY), left: px(innerX), height: px(screenHeight), width: px(screenWidth)}" -->
+        <div ref="box" class="box overflow-hidden fixed bg-widte" :style="{top: px(boxY), left: px(boxX)}" @mouseup="mouseup" @touchend="mouseup" @mousedown="mousedown" @touchstart="mousedown">
             <div class="inner absolute p-10" :style="{top: px(innerY), left: px(innerX), height: px(screenHeight), width: px(screenWidth)}">
                 <h3 class="font-bold mt-5 mb-2">
                     The standard Lorem Ipsum passage, used since the 1500s

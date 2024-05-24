@@ -45,6 +45,4 @@ const handleCreated = (editor) => {
 
 <style src="@wangeditor/editor/dist/css/style.css"></style>
 <style lang="scss" scoped>
-.paper {
-}
 </style>

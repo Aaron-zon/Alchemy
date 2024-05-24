@@ -50,7 +50,7 @@ export const info = [
     no: 11,
   },
   {
-    name: 'Editor', // 文本编辑器 / 图片粘贴 / 视频粘贴(未进行)
+    name: 'Textbus Editor', // 文本编辑器 / 图片粘贴 / 视频粘贴(未进行)
     no: 12,
   },
   {
@@ -68,8 +68,18 @@ export const info = [
   {
     name: 'View Transitions', // 主题切换动画
     no: 16,
-
   }
+
+// 地区天气
+// 二维码生成
+// 商品条形码
+// JSON格式化
+// 代办事项
+// PDF转换
+// 时间戳转换
+// Base64加密
+// MD5加密
+// 颜色值转换
 ]
 
 export const works = info.map((info, idx) => {

@@ -1,38 +1,43 @@
 <script setup>
-import { ref } from 'vue'
+import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-const editor = ref(null);
-const toolbarConfig = ref({})
-const mode = ref('default')
-const html = ref('<p>Hello</p>')
-const editorConfig = ref({ placeholder: '请输入内容...' })
 
-const onCreated = () => {
-  console.log('editor created!')
-  debugger
-  console.log(editor.value)
-  // editor.value = Object.seal(editor.value)
+// 编辑器实例，必须用 shallowRef
+const editorRef = shallowRef()
+
+// 内容 HTML
+const valueHtml = ref('<p>hello</p>')
+
+const toolbarConfig = {}
+const editorConfig = { placeholder: '请输入内容...' }
+
+// 组件销毁时，也及时销毁编辑器
+onBeforeUnmount(() => {
+    const editor = editorRef.value
+    if (editor == null) return
+    editor.destroy()
+})
+
+const handleCreated = (editor) => {
+  editorRef.value = editor // 记录 editor 实例，重要！
 }
-
-setTimeout(() => {
-            html.value = '<p>模拟 Ajax 异步设置内容 HTML</p>'
-        }, 1500)
 </script>
 
 <template>
   <Paper>
-    <div id="editor" class="wrapper">
-      <Toolbar 
-        style="border-bottom: 1px solid black;"
-        :editor="editor"
+    <div style="border: 1px solid #ccc">
+      <Toolbar
+        style="border-bottom: 1px solid #ccc"
+        :editor="editorRef"
         :defaultConfig="toolbarConfig"
         :mode="mode"
       />
-      <Editor 
-        v-model="html"
+      <Editor
+        style="height: 500px; overflow-y: hidden;"
+        v-model="valueHtml"
         :defaultConfig="editorConfig"
         :mode="mode"
-        @onCreated="onCreated"
+        @onCreated="handleCreated"
       />
     </div>
   </Paper>
@@ -41,11 +46,5 @@ setTimeout(() => {
 <style src="@wangeditor/editor/dist/css/style.css"></style>
 <style lang="scss" scoped>
 .paper {
-  .wrapper {
-    border: 1px solid black;
-    overflow: hidden;
-    width: 500px;
-    height: 500px;
-  }
 }
 </style>

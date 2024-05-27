@@ -15,7 +15,7 @@ export const info = [
     no: 3,
   },
   {
-    name: 'Scope', // 范围文字显示(进行中)
+    name: 'Scope', // 范围文字显示
     date: '2024/03/18',
     no: 4,
   },
@@ -50,7 +50,7 @@ export const info = [
     no: 11,
   },
   {
-    name: 'Textbus Editor', // 文本编辑器 / 图片粘贴 / 视频粘贴(未进行)
+    name: 'Textbus Editor', // 文本编辑器 / 图片粘贴 / 视频粘贴(进行中)
     no: 12,
   },
   {

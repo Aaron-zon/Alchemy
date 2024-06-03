@@ -68,9 +68,12 @@ export const info = [
   {
     name: 'View Transitions', // 主题切换动画
     no: 16,
+  },
+  {
+    name: 'weather', // 地区天气(未进行)
+    no: 17,
   }
 
-// 地区天气
 // 二维码生成
 // 商品条形码
 // JSON格式化

@@ -70,7 +70,7 @@ export const info = [
     no: 16,
   },
   {
-    name: 'weather', // 地区天气(未进行)
+    name: 'weather', // 地区天气
     no: 17,
   }
 

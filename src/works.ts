@@ -42,7 +42,7 @@ export const info = [
     no: 9,
   },
   {
-    name: 'FileDownload', // 文件下载 / 大文件 / 预览(未进行)
+    name: 'FileDownload', // 文件下载(完成) / 大文件（调试） / 预览(未进行)
     no: 10,
   },
   {
@@ -72,16 +72,21 @@ export const info = [
   {
     name: 'weather', // 地区天气
     no: 17,
+  },
+  {
+    name: '加密解密', // Base64 / MD5 / JSON格式化 /其他 (未进行)
+    no: 18
+  },
+  {
+    name: '条码生成', // 二维码/条形码 (未进行)
+    no: 19
+  },
+  {
+    name: 'PDF转换', // PDF to word (未进行)
+    no: 20
   }
-
-// 二维码生成
-// 商品条形码
-// JSON格式化
 // 代办事项
-// PDF转换
 // 时间戳转换
-// Base64加密
-// MD5加密
 // 颜色值转换
 ]
 
